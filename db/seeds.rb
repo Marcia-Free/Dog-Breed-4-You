@@ -1,3 +1,6 @@
+Breed.destroy_all
+User.destroy_all
+UsersBreed.destroy_all
 
         #t.string :breed
         #t.string :activity_level (high, medium, low)
