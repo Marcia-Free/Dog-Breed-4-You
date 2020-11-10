@@ -1,0 +1,3 @@
+class BreedRecommendations
+    
+end
