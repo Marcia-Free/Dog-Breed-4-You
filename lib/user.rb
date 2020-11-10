@@ -3,5 +3,4 @@ class User < ActiveRecord::Base
     has_many :breeds, through: :users_breeds
 
 
-
 end
