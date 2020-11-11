@@ -6,14 +6,14 @@ def display_title
 
     puts pastel.white(font.write("Welcome", letter_spacing: 3))
     puts pastel.white(font.write("To", letter_spacing: 3))
-    sleep(2,)
+    sleep(1,)
     system "clear"
 
     puts pastel.magenta(font.write("Dog", letter_spacing: 3))
     puts pastel.magenta(font.write("Breed", letter_spacing: 3))
     puts pastel.bright_magenta(font.write("4"))
     puts pastel.bright_magenta(font.write("You", letter_spacing: 3))
-    sleep(5,)
+    sleep(4,)
 end
 
 display_title
