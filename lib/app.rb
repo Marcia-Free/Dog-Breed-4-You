@@ -2,11 +2,6 @@ require_relative "user.rb"
 require 'pry'
 
 class App 
-    attr_accessor :users_response
-
-    def initialize
-        @users_response = users_response
-    end
 
     def user_status
         prompt = TTY::Prompt.new
@@ -23,7 +18,6 @@ class App
 
 
     def user_questions
-
         puts "Let's figure out what type of dog you are looking for"
         sleep(2,)
         system "clear"
@@ -59,40 +53,39 @@ class App
         selection = prompt.select("Do these look right to you?", %w(Continue Start_Over))
         system "clear"
 
-        #need to change this to update the user, not create a new one
-        @users_response = User.new(name: "user_name", activity_level: activity_level_input, 
-        kid_friendly: kid_friendly_input, dog_size: dog_size_input, hypoallergenic: hypoallergenic_input)
+        
 
             if selection == "Continue"
-                #users_response.save
-                #puts users_response.name
                 puts "...Generating Cute Cuddly Friends... "
+                User.current_user.activity_level = activity_level_input
+                User.current_user.kid_friendly = kid_friendly_input
+                User.current_user.dog_size = dog_size_input
+                User.current_user.hypoallergenic = hypoallergenic_input
+                User.current_user.save
                 sleep(2,)
                 recommendations
+
             elsif selection == "Start_Over"
                 system "clear"
                 user_questions
             end
     end
 
+
     def recommendations
         puts "You get all the dogs! (Booted into Recommendation method)"
         
-        test = Breed.where(activity_level: users_response.activity_level, 
-                kid_friendly: users_response.kid_friendly,
-                dog_size: users_response.dog_size, 
-                hypoallergenic: users_response.hypoallergenic)
-
+        test = Breed.where(activity_level: User.current_user.activity_level, 
+                kid_friendly: User.current_user.kid_friendly,
+                dog_size: User.current_user.dog_size, 
+                hypoallergenic: User.current_user.hypoallergenic)
 
         perfect_dogs = test.all.map do |dog|
             dog.breed
-            #binding.pry
         end
-        #system "clear"
-        puts perfect_dogs
-        
+        system "clear"
+        puts perfect_dogs 
     end
-
 
 end
 

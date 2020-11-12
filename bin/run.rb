@@ -16,14 +16,8 @@ def display_title
     sleep(4,)
 end
 
-#display_title
+display_title
 system "clear"
 
-#App.new.user_status
+App.new.user_status
 system "clear"
-
-App.new.user_questions
-
-
-# prompt = TTY::Prompt.new
-# input = prompt.select("Please setup your account", %w(Make_an_account Look_at_your_recommendations Goodbye))
