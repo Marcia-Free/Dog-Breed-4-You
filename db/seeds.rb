@@ -158,8 +158,28 @@ kid_friendly: "Yes", dog_size: "Large", hypoallergenic: "No")
 Portuguese_Water_Dog = Breed.create(breed: "Portuguese Water Dog", activity_level: "High",	
 kid_friendly: "No", dog_size: "Medium", hypoallergenic: "Yes")
 
-Placeholder_Dog = Breed.create(breed: "Placeholder", activity_level: " ",	
-kid_friendly: " ", dog_size: " ", hypoallergenic: " ")
+Soft_Coated_Wheaten_Terrier = Breed.create(breed: "Soft Coated Wheaten Terrier", activity_level: "High",	
+kid_friendly: "Yes", dog_size: "Medium", hypoallergenic: "Yes")
+
+Irish_Water_Spaniel = Breed.create(breed: "Irish Water Spaniel", activity_level: "High",	
+kid_friendly: "Yes", dog_size: "Large", hypoallergenic: "Yes")
+
+Brussels_Griffon = Breed.create(breed: "Brussels Griffon", activity_level: "High",	
+kid_friendly: "Yes", dog_size: "Small", hypoallergenic: "Yes")
+
+Samoyed = Breed.create(breed: "Samoyed", activity_level: "High",	
+kid_friendly: "Yes", dog_size: "Large", hypoallergenic: "Yes")
+
+Puli = Breed.create(breed: "Puli", activity_level: "Medium",	
+kid_friendly: "Yes", dog_size: "Medium", hypoallergenic: "Yes")
+
+Bergamasco_Sheepdog = Breed.create(breed: "Bergamasco Sheepdog", activity_level: "Low",	
+kid_friendly: "Yes", dog_size: "Large", hypoallergenic: "Yes")
+
+Old_English_Sheepdog = Breed.create(breed: "Old English Sheepdog", activity_level: "Low",	
+kid_friendly: "Yes", dog_size: "Large", hypoallergenic: "Yes")
+
+
 
 #-------USERS
         #t.string :name
@@ -187,12 +207,12 @@ kid_friendly: "No", dog_size: "Large", hypoallergenic: "No")
         #t.integer "user_id"
         #t.integer "breed_id"
 
-Recommendation_1 = UsersBreed.create(user_id: Dena.id, breed_id: Placeholder_Dog.id)
+Recommendation_1 = UsersBreed.create(user_id: Dena.id, breed_id: Old_English_Sheepdog.id)
 
-Recommendation_2 = UsersBreed.create(user_id: Marcia.id, breed_id: Placeholder_Dog.id)
+Recommendation_2 = UsersBreed.create(user_id: Marcia.id, breed_id: Old_English_Sheepdog.id)
 
-Recommendation_3 = UsersBreed.create(user_id: Max.id, breed_id: Placeholder_Dog.id)
+Recommendation_3 = UsersBreed.create(user_id: Max.id, breed_id: Old_English_Sheepdog.id)
 
-Recommendation_4 = UsersBreed.create(user_id: Derick.id, breed_id: Placeholder_Dog.id)
+Recommendation_4 = UsersBreed.create(user_id: Derick.id, breed_id: Old_English_Sheepdog.id)
 
-Recommendation_5 = UsersBreed.create(user_id: Evelyn.id, breed_id: Placeholder_Dog.id)
+Recommendation_5 = UsersBreed.create(user_id: Evelyn.id, breed_id: Old_English_Sheepdog.id)

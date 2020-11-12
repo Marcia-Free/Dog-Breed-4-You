@@ -20,9 +20,9 @@ display_title
 system "clear"
 
 App.new.user_status
-system "clear"
+# system "clear"
 
-App.new.user_questions
+# App.new.user_questions
 
 
 # prompt = TTY::Prompt.new

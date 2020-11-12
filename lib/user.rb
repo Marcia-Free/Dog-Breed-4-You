@@ -2,6 +2,8 @@ class User < ActiveRecord::Base
     has_many :users_breeds
     has_many :breeds, through: :users_breeds
 
+    @@current_user
+
     def self.create_new_user  # ==> if input == "New_User"
         puts "Please create your username:"
         user_name = gets.chomp
@@ -13,27 +15,30 @@ class User < ActiveRecord::Base
             puts "Uh-Oh! Looks like that username is already taken! Please create a new one."
             create_new_user
         else
-            current_user = User.create(name: user_name)
+            @@current_user = User.create(name: user_name)
             system "clear"
-            puts "Username #{current_user.name} was created successfully! Welcome #{current_user.name}!"
+            puts "Username #{@@current_user.name} was created successfully! Welcome #{@@current_user.name}!".blue
+            sleep(3,)
         end
-        current_user
+        @@current_user
+        system "clear"
+        self.next_move
     end
 
     def self.find_existing_user # ==> if input == "Existing_User"
         puts "Please enter your username:"
         user_name = gets.chomp
-        current_user = User.find_by(name: user_name)
+        @@current_user = User.find_by(name: user_name)
 
         if User.exists?(name: user_name)
             system "clear"
-            puts "Welcome back, #{current_user.name}!"
-        
+            puts "Welcome back, #{@@current_user.name}!"
+            sleep(3,)
+            system "clear"
+            self.next_move
+
         else
             system "clear"
-            # puts "Sorry! Username does not exist! Please enter a different username."
-            # find_existing_user
-            #=>option to create new one or enter different username
 
             prompt = TTY::Prompt.new
             input = prompt.select("Looks like that username does not exist! Would you like to create a new username or try again?", %w(New_Username Try_Again))
@@ -46,7 +51,31 @@ class User < ActiveRecord::Base
                 self.find_existing_user
             end
         end
-        current_user
+        @@current_user
+    end
+
+
+    def self.next_move
+        prompt = TTY::Prompt.new
+        input = prompt.select("What would you like to do next?", %w(Find_New_Dog_Recommendations View_My_Favorite_Puppies Exit))
+        
+        if input == "Find_New_Dog_Recommendations"
+            system "clear"
+            App.new.user_questions
+
+        elsif input == "View_My_Favorite_Puppies"
+            system "clear"
+            App.new.favorite_puppies
+        else input == "Exit"
+            system "clear"
+            puts "Thank you for visiting Dog Breed 4 You! See you next time!".magenta
+            sleep(3,)
+            system "clear"
+        end
+    end
+
+    def self.current_user
+        @@current_user
     end
 
 
