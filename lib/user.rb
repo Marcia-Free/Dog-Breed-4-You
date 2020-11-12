@@ -22,7 +22,7 @@ class User < ActiveRecord::Base
         end
         @@current_user
         system "clear"
-        self.next_move
+        App.new.user_questions
     end
 
     def self.find_existing_user # ==> if input == "Existing_User"
@@ -43,6 +43,7 @@ class User < ActiveRecord::Base
             prompt = TTY::Prompt.new
             input = prompt.select("Looks like that username does not exist! Would you like to create a new username or try again?", %w(New_Username Try_Again))
 
+
             if input == "New_Username"
                 system "clear"
                 self.create_new_user
@@ -55,13 +56,30 @@ class User < ActiveRecord::Base
     end
 
 
+    # def options
+    #     prompt = TTY::Prompt.new
+    #     input_1 = prompt.select("You have updated your favorite dog! What would you like to do next?", %w(View_My_Favorite_Puppies Add_New_Recommendation Exit))
+    #     if input_1 == "View_My_Favorite_Puppies"
+    #         App.new.favorite_puppies
+    #     elsif input_1 == "Add_New_Recommendation"
+    #         system "clear"
+    #         App.new.user_questions
+    #     else input_1 == "Exit"
+    #         system "clear"
+    #         puts "Thank you for visiting Dog Breed 4 You! See you next time!".magenta
+    #         sleep(3,)
+    #         system "clear"
+    #     end
+    # end
+
     def self.next_move
         prompt = TTY::Prompt.new
-        input = prompt.select("What would you like to do next?", %w(Find_New_Dog_Recommendations View_My_Favorite_Puppies Exit))
+        input = prompt.select("What would you like to do next?", %w(Update_Old_Recommendations View_My_Favorite_Puppies Exit))
         
-        if input == "Find_New_Dog_Recommendations"
+        if input == "Update_Old_Recommendations"
             system "clear"
             App.new.user_questions
+            system "clear"
 
         elsif input == "View_My_Favorite_Puppies"
             system "clear"

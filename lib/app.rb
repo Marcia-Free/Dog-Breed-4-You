@@ -6,7 +6,7 @@ class App
     attr_accessor :my_favorite_pups
 
     def intialize
-        @my_favorite_pups = []
+        @my_favorite_pups = my_favorite_pups
     end
 
     def user_status
@@ -84,7 +84,6 @@ class App
      end
 
     def new_puppies
-        #favorites = []
         puts "You get all the dogs! (Booted into Recommendation method)"
         test = Breed.where(activity_level: User.current_user.activity_level, 
                 kid_friendly: User.current_user.kid_friendly,
@@ -95,7 +94,7 @@ class App
             dog.breed 
         end
 
-        #favorites << perfect_dogs
+        
         system "clear"
         puts perfect_dogs 
         sleep(3,)
@@ -111,9 +110,13 @@ class App
         if selection == "Select_My_Favorite_Dog"
             prompt = TTY::Prompt.new
             dog_choice = prompt.ask("Please type which dog you would like to add to your favorites (case sensitive)", default: ENV["Dog Choice"])
-            my_dogs = Breed.all.select {|x| x.breed == dog_choice}
-            
+            my_dogs = Breed.all.find do|dog| 
+                dog.breed == dog_choice
+            end
+            UsersBreed.create(user_id: User.current_user.id, breed_id: my_dogs.id)
             #binding.pry
+            system "clear"
+            User.next_move
         end
 
         # puts my_dog
@@ -125,7 +128,14 @@ class App
     end
 
     def favorite_puppies
-        @my_favorite_pups
+        system "clear"
+        puts "These are your favorites!"
+        puts ""
+        system "clear"
+        my_breeds = User.current_user.breeds
+        my_breeds.all.select do |dog|
+            puts dog.breed
+        end
     end
 
 end
