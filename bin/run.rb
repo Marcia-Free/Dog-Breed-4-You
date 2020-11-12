@@ -16,10 +16,10 @@ def display_title
     sleep(4,)
 end
 
-display_title
+#display_title
 system "clear"
 
-App.new.user_status
+#App.new.user_status
 system "clear"
 
 App.new.user_questions

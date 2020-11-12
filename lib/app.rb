@@ -60,7 +60,7 @@ class App
 
             if selection == "Continue"
                 #users_response.save
-                puts users_response.name
+                #puts users_response.name
                 puts "...Generating Cute Cuddly Friends... "
                 sleep(2,)
                 recommendations
@@ -78,9 +78,14 @@ class App
                 dog_size: users_response.dog_size, 
                 hypoallergenic: users_response.hypoallergenic)
 
-        perfect_dogs = test.all
+
+        perfect_dogs = test.all.map do |dog|
+            dog.breed
+            #binding.pry
+        end
+        #system "clear"
         puts perfect_dogs
-        binding.pry
+        
     end
 
 
