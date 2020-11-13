@@ -1,17 +1,12 @@
 require_relative "user.rb"
-require 'pry'
+require_relative "breed.rb"
+require_relative "favorite.rb"
 
 class App 
 
-    attr_accessor :my_favorite_pups
-
-    def intialize
-        @my_favorite_pups = my_favorite_pups
-    end
-
     def user_status
         prompt = TTY::Prompt.new
-        input = prompt.select("What is your current status?", %w(New_User Existing_User))
+        input = prompt.select("What is your current status?", %w(New_User Existing_User Exit))
 
         system "clear"
         
@@ -19,6 +14,8 @@ class App
             User.create_new_user
         elsif input == "Existing_User"
             User.find_existing_user
+        else input == "Exit"
+            exit
         end
     end
 
@@ -56,7 +53,7 @@ class App
         puts ""
 
         prompt = TTY::Prompt.new
-        selection = prompt.select("Do these look right to you?", %w(Continue Start_Over))
+        selection = prompt.select("Do these look right to you?", %w(Continue Start_Over Exit))
         system "clear"
 
 
@@ -72,69 +69,41 @@ class App
                 puts "...Generating Cute Cuddly Friends... "
                 sleep(3,)
                 system "clear"
-                self.new_puppies  
-
-                
+                Breed.new.puppy_choices  
 
             elsif selection == "Start_Over"
                 system "clear"
                 user_questions
+
+            else input == "Exit"
+                exit
             end
-     end
-
-    def new_puppies
-        puts "You get all the dogs! (Booted into Recommendation method)"
-        test = Breed.where(activity_level: User.current_user.activity_level, 
-                kid_friendly: User.current_user.kid_friendly,
-                dog_size: User.current_user.dog_size, 
-                hypoallergenic: User.current_user.hypoallergenic)
-
-        perfect_dogs = test.all.map do |dog|
-            dog.breed 
-        end
-
-        
-        system "clear"
-        puts perfect_dogs 
-        sleep(3,)
-        self.choose_a_dog
-    
     end
 
-    def choose_a_dog
-        puts ""
+
+    def self.next_move
         prompt = TTY::Prompt.new
-        selection = prompt.select("Would you like to select one of the above dogs to add to your favorites, try again, or exit ", %w(Select_My_Favorite_Dog Try_Again Exit))
-        puts ""
-        if selection == "Select_My_Favorite_Dog"
-            prompt = TTY::Prompt.new
-            dog_choice = prompt.ask("Please type which dog you would like to add to your favorites (case sensitive)", default: ENV["Dog Choice"])
-            my_dogs = Breed.all.find do|dog| 
-                dog.breed == dog_choice
-            end
-            UsersBreed.create(user_id: User.current_user.id, breed_id: my_dogs.id)
-            #binding.pry
+        input = prompt.select("What would you like to do next?", %w(Find_New_Dog_Recommendations View_My_Favorite_Puppies Exit))
+        
+        if input == "Find_New_Dog_Recommendations"
             system "clear"
-            User.next_move
+            new.user_questions
+            system "clear"
+
+        elsif input == "View_My_Favorite_Puppies"
+            system "clear"
+            Favorite.new.favorite_puppies
+        else input == "Exit"
+            App.exit
         end
-
-        # puts my_dog
-
-        # @@my_favorite_pups << my_dog
-        # if selection == "try_again"  
-        #     user_questions
-        # end
     end
 
-    def favorite_puppies
+    
+    def self.exit
         system "clear"
-        puts "These are your favorites!"
-        puts ""
+        puts "Thank you for visiting Dog Breed 4 You! See you next time!".magenta
+        sleep(3,)
         system "clear"
-        my_breeds = User.current_user.breeds
-        my_breeds.all.select do |dog|
-            puts dog.breed
-        end
     end
 
 end

@@ -16,6 +16,7 @@ def display_title
     sleep(4,)
 end
 
+
 display_title
 system "clear"
 
