@@ -1,3 +1,4 @@
+
 require_relative "user.rb"
 require_relative "breed.rb"
 require_relative "favorite.rb"
@@ -6,7 +7,8 @@ class App
 
     def user_status
         prompt = TTY::Prompt.new
-        selection = prompt.select("What is your current status?", %w(New_User Existing_User Exit))
+        selection = prompt.select("What is your current status?".magenta.bold, %w(New_User Existing_User Exit))
+
 
         system "clear"
         
@@ -21,39 +23,44 @@ class App
 
 
     def user_questions
-        puts "Let's figure out what type of dog you are looking for"
+
+        pastel = Pastel.new
+        puts "Let's figure out what type of dog you are looking for".magenta.bold
+
         sleep(3,)
         system "clear"
         #--------------Questions
         prompt = TTY::Prompt.new
-        activity_level_input = prompt.select("What is the average level of energy you want in your dog?", %w(High Medium Low))
+        activity_level_input = prompt.select("What is the average level of energy you want in your dog?".magenta.bold, %w(High Medium Low))
         system "clear"
         prompt = TTY::Prompt.new
-        dog_size_input = prompt.select("What size dog are you looking for?", %w(Large Medium Small))
+        dog_size_input = prompt.select("What size dog are you looking for?".magenta.bold, %w(Large Medium Small))
         system "clear"
         prompt = TTY::Prompt.new
-        kid_friendly_input = prompt.select("Do you need a dog that is good with kids?", %w(Yes No))
+        kid_friendly_input = prompt.select("Do you need a dog that is good with kids?".magenta.bold, %w(Yes No))
         system "clear"
         prompt = TTY::Prompt.new
-        hypoallergenic_input = prompt.select("Do you have allergies or need a dog that is hypoallergenic?", %w(Yes No))
+        hypoallergenic_input = prompt.select("Do you have allergies or need a dog that is hypoallergenic?".magenta.bold, %w(Yes No))
         system "clear"
 
         #-------Verify answers to Questions
         puts "Here are the answers you put:"
         puts ""
         sleep(1,)
-        puts "Energy Level - #{activity_level_input}"
+        puts "Energy Level - #{activity_level_input}".magenta.bold
         sleep(1,)
-        puts "Dog Size - #{dog_size_input}"
+        puts "Dog Size - #{dog_size_input}".magenta.bold
         sleep(1,)
-        puts "Kid friendly? #{kid_friendly_input}"
+        puts "Kid friendly? #{kid_friendly_input}".magenta.bold
         sleep(1,)
-        puts "Hypoallergenic? #{hypoallergenic_input}"
+        puts "Hypoallergenic? #{hypoallergenic_input}".magenta.bold
         sleep(1,)
         puts ""
 
         prompt = TTY::Prompt.new
-        selection = prompt.select("Do these look right to you?", %w(Continue Start_Over Exit))
+
+        selection = prompt.select("Do these look right to you?".white, %w(Continue Start_Over Exit))
+
         system "clear"
             if selection == "Continue"
                 User.current_user.activity_level = activity_level_input
@@ -62,7 +69,7 @@ class App
                 User.current_user.hypoallergenic = hypoallergenic_input
                 User.current_user.save
                 system "clear"
-                puts "...Generating Cute Cuddly Friends... "
+                puts pastel.italic("...Generating Cute Cuddly Friends... ").magenta
                 sleep(3,)
                 system "clear"
                 Breed.new.puppy_choices  
@@ -78,15 +85,17 @@ class App
 
 
     def self.next_move
+
+        pastel = Pastel.new
         prompt = TTY::Prompt.new
-        selection = prompt.select("What would you like to do next?", %w(Find_New_Dog_Recommendations View_My_Favorite_Puppies Exit))
+        selection = prompt.select("What would you like to do next? (Keep in mind, in order to view your most recently added favorite pup, you must re-login)".magenta, %w(Find_New_Dog_Recommendations View_My_Favorite_Puppies Exit))
         
         if selection == "Find_New_Dog_Recommendations"
             system "clear"
             App.new.user_questions
             system "clear"
-        elsif selection == "View_My_Favorite_Puppies"
 
+        elsif selection == "View_My_Favorite_Puppies"
             if Breed.new.user_breeds.length == 0
                 prompt = TTY::Prompt.new
                 system "clear"
@@ -101,6 +110,7 @@ class App
             end
 
 
+
             system "clear"
             Favorite.new.favorite_puppies
         else selection == "Exit"
@@ -110,6 +120,8 @@ class App
 
     
     def self.exit
+        fork{ exec "afplay", "music/dog_bark.mp3" }
+
         system "clear"
         puts "Thank you for visiting Dog Breed 4 You! See you next time!".magenta
         sleep(3,)

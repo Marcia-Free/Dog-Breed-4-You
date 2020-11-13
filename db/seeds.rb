@@ -48,10 +48,11 @@ Pembroke_Welsh_Corgi = Breed.create(breed: "Pembroke Welsh Corgi", activity_leve
 kid_friendly: "Yes", dog_size: "Small", hypoallergenic: "No")
 
 Siberian_Husky = Breed.create(breed: "Siberian Husky", activity_level: "High", 
-kid_friendly: "Yes", dog_size: "Medium", hypoallergenic: "No")
+kid_friendly: "Yes", dog_size: "Large", hypoallergenic: "No")
 
 Australian_Shepherd = Breed.create(breed: "Australian Shepherd", activity_level: "High", 
-kid_friendly: "Yes", dog_size: "Medium", hypoallergenic: "No")
+kid_friendly: "Yes", dog_size: "Large", hypoallergenic: "No")
+
 
 Great_Dane = Breed.create(breed: "Great Dane", activity_level: "High", 
 kid_friendly: "Yes", dog_size: "Large", hypoallergenic: "No")
@@ -188,23 +189,22 @@ kid_friendly: "Yes", dog_size: "Large", hypoallergenic: "Yes")
         #t.string :dog_size(large, medium, small)
         #t.string :hypoallergenic (yes, no)
 
-Dena = User.create(name: "Dena", activity_level: "Low",	
-kid_friendly: "Yes", dog_size: "Large", hypoallergenic: "Yes")
+# Dena = User.create(name: "Dena", activity_level: "Low",	
+# kid_friendly: "Yes", dog_size: "Large", hypoallergenic: "Yes")
 
-Marcia = User.create(name: "Marcia", activity_level: "Medium",	
-kid_friendly: "Yes", dog_size: "Small", hypoallergenic: "Yes")
+# Marcia = User.create(name: "Marcia", activity_level: "Medium",	
+# kid_friendly: "Yes", dog_size: "Small", hypoallergenic: "Yes")
 
-Max = User.create(name: "Max", activity_level: "High",
-kid_friendly: "No", dog_size: "Medium", hypoallergenic: "No")
+# Max = User.create(name: "Max", activity_level: "High",
+# kid_friendly: "No", dog_size: "Medium", hypoallergenic: "No")
 
-Derick = User.create(name: "Derick", activity_level: "High",	
-kid_friendly: "Yes", dog_size: "Small", hypoallergenic: "No")
+# Derick = User.create(name: "Derick", activity_level: "High",	
+# kid_friendly: "Yes", dog_size: "Small", hypoallergenic: "No")
 
-Evelyn = User.create(name: "Evelyn", activity_level: "Low",	
-kid_friendly: "No", dog_size: "Large", hypoallergenic: "No")
+# Evelyn = User.create(name: "Evelyn", activity_level: "Low",	
+# kid_friendly: "No", dog_size: "Large", hypoallergenic: "No")
 
 #-------Favorites
         #t.integer "user_id"
         #t.integer "breed_id"
 
-#Recommendation_1 = Favorites.create(user_id: Dena.id, breed_id: Old_English_Sheepdog.id)
