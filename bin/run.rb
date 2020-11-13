@@ -20,4 +20,5 @@ display_title
 system "clear"
 
 App.new.user_status
-system "clear"
+# system "clear"
+
