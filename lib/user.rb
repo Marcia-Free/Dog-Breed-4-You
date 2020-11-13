@@ -41,7 +41,6 @@ class User < ActiveRecord::Base
             prompt = TTY::Prompt.new
             selection = prompt.select("Looks like that username does not exist! Would you like to create a new username or try again?".red, %w(New_Username Try_Again Exit))
 
-
             if selection == "New_Username"
                 system "clear"
                 self.create_new_user
@@ -49,10 +48,7 @@ class User < ActiveRecord::Base
                 system "clear"
                 self.find_existing_user
             else selection == "Exit"
-                system "clear"
-                puts "Thank you for visiting Dog Breed 4 You! See you next time!".magenta
-                sleep(3,)
-                system "clear"
+                App.exit
             end
         end
         @@current_user

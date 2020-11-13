@@ -78,6 +78,7 @@ end
 
 
 
+
 display_title
 system "clear"
 
@@ -85,4 +86,5 @@ dog_pic
 system "clear"
 
 App.new.user_status
+
 

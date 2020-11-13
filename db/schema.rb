@@ -15,8 +15,8 @@ ActiveRecord::Schema.define(version: 2020_11_13_162321) do
   create_table "breeds", force: :cascade do |t|
     t.string "breed"
     t.string "activity_level"
-    t.string "dog_size"
     t.string "kid_friendly"
+    t.string "dog_size"
     t.string "hypoallergenic"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -30,16 +30,11 @@ ActiveRecord::Schema.define(version: 2020_11_13_162321) do
   create_table "users", force: :cascade do |t|
     t.string "name"
     t.string "activity_level"
-    t.string "dog_size"
     t.string "kid_friendly"
+    t.string "dog_size"
     t.string "hypoallergenic"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "users_breeds", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "breed_id"
   end
 
 end

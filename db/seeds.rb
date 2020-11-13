@@ -53,6 +53,7 @@ kid_friendly: "Yes", dog_size: "Large", hypoallergenic: "No")
 Australian_Shepherd = Breed.create(breed: "Australian Shepherd", activity_level: "High", 
 kid_friendly: "Yes", dog_size: "Large", hypoallergenic: "No")
 
+
 Great_Dane = Breed.create(breed: "Great Dane", activity_level: "High", 
 kid_friendly: "Yes", dog_size: "Large", hypoallergenic: "No")
 
@@ -203,16 +204,7 @@ kid_friendly: "Yes", dog_size: "Large", hypoallergenic: "Yes")
 # Evelyn = User.create(name: "Evelyn", activity_level: "Low",	
 # kid_friendly: "No", dog_size: "Large", hypoallergenic: "No")
 
-#-------USERS-BREEDS
+#-------Favorites
         #t.integer "user_id"
         #t.integer "breed_id"
 
-# Recommendation_1 = UsersBreed.create(user_id: Dena.id, breed_id: Old_English_Sheepdog.id)
-
-# Recommendation_2 = UsersBreed.create(user_id: Marcia.id, breed_id: Old_English_Sheepdog.id)
-
-# Recommendation_3 = UsersBreed.create(user_id: Max.id, breed_id: Old_English_Sheepdog.id)
-
-# Recommendation_4 = UsersBreed.create(user_id: Derick.id, breed_id: Old_English_Sheepdog.id)
-
-# Recommendation_5 = UsersBreed.create(user_id: Evelyn.id, breed_id: Old_English_Sheepdog.id)

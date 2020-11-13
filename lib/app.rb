@@ -9,6 +9,7 @@ class App
         prompt = TTY::Prompt.new
         selection = prompt.select("What is your current status?".magenta.bold, %w(New_User Existing_User Exit))
 
+
         system "clear"
         
         if selection == "New_User"
@@ -16,14 +17,16 @@ class App
         elsif selection == "Existing_User"
             User.find_existing_user
         else selection == "Exit"
-            exit
+            App.exit
         end
     end
 
 
     def user_questions
+
         pastel = Pastel.new
         puts "Let's figure out what type of dog you are looking for".magenta.bold
+
         sleep(3,)
         system "clear"
         #--------------Questions
@@ -55,18 +58,16 @@ class App
         puts ""
 
         prompt = TTY::Prompt.new
+
         selection = prompt.select("Do these look right to you?".white, %w(Continue Start_Over Exit))
+
         system "clear"
-
-
-
             if selection == "Continue"
                 User.current_user.activity_level = activity_level_input
                 User.current_user.kid_friendly = kid_friendly_input
                 User.current_user.dog_size = dog_size_input
                 User.current_user.hypoallergenic = hypoallergenic_input
                 User.current_user.save
-
                 system "clear"
                 puts pastel.italic("...Generating Cute Cuddly Friends... ").magenta
                 sleep(3,)
@@ -84,16 +85,32 @@ class App
 
 
     def self.next_move
+
         pastel = Pastel.new
         prompt = TTY::Prompt.new
         selection = prompt.select("What would you like to do next? (Keep in mind, in order to view your most recently added favorite pup, you must re-login)".magenta, %w(Find_New_Dog_Recommendations View_My_Favorite_Puppies Exit))
         
         if selection == "Find_New_Dog_Recommendations"
             system "clear"
-            new.user_questions
+            App.new.user_questions
             system "clear"
 
         elsif selection == "View_My_Favorite_Puppies"
+            if Breed.new.user_breeds.length == 0
+                prompt = TTY::Prompt.new
+                system "clear"
+                next_move_selection = prompt.select("Looks like you dont have favorites yet. What would you like to do?", %w(Find_New_Dog_Recommendations Exit))
+                    if next_move_selection == "Find_New_Dog_Recommendations"
+                        system "clear"
+                        App.new.user_questions
+                        system "clear"
+                    else next_move_selection == "Exit"
+                        App.exit
+                    end
+            end
+
+
+
             system "clear"
             Favorite.new.favorite_puppies
         else selection == "Exit"
@@ -104,6 +121,7 @@ class App
     
     def self.exit
         fork{ exec "afplay", "music/dog_bark.mp3" }
+
         system "clear"
         puts "Thank you for visiting Dog Breed 4 You! See you next time!".magenta
         sleep(3,)
