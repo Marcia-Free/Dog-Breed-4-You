@@ -39,53 +39,22 @@ class User < ActiveRecord::Base
             system "clear"
 
             prompt = TTY::Prompt.new
-            input = prompt.select("Looks like that username does not exist! Would you like to create a new username or try again?", %w(New_Username Try_Again Exit))
+            selection = prompt.select("Looks like that username does not exist! Would you like to create a new username or try again?", %w(New_Username Try_Again Exit))
 
 
-            if input == "New_Username"
+            if selection == "New_Username"
                 system "clear"
                 self.create_new_user
-            elsif input == "Try_Again"
+            elsif selection == "Try_Again"
                 system "clear"
                 self.find_existing_user
-            else input == "Exit"
+            else selection == "Exit"
                 App.exit
             end
         end
         @@current_user
     end
 
-
-    # def options
-    #     prompt = TTY::Prompt.new
-    #     input_1 = prompt.select("You have updated your favorite dog! What would you like to do next?", %w(View_My_Favorite_Puppies Add_New_Recommendation Exit))
-    #     if input_1 == "View_My_Favorite_Puppies"
-    #         App.new.favorite_puppies
-    #     elsif input_1 == "Add_New_Recommendation"
-    #         system "clear"
-    #         App.new.user_questions
-    #     else input_1 == "Exit"
-    #         system "clear"
-    #         puts "Thank you for visiting Dog Breed 4 You! See you next time!".magenta
-    #         sleep(3,)
-    #         system "clear"
-    #     end
-    # end
-
-    # def self.next_move
-    #     prompt = TTY::Prompt.new
-    #     input = prompt.select("What would you like to do next?", %w(Find_New_Dog_Recommendations View_My_Existing_Recommendations Exit))
-    #     if input == "Find_New_Dog_Recommendations"
-    #         system "clear"
-    #         App.new.user_questions
-    #     elsif input == "View_My_Existing_Recommendations"
-    #         system "clear"
-    #         #=> view existing recommendations method, and ask if they want to keep input or change input
-    #         #App.recommendations
-    #     else input == "Exit"
-    #         App.exit
-    #     end
-    # end
 
     def self.current_user
         @@current_user

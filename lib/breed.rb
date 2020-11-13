@@ -3,7 +3,6 @@ class Breed < ActiveRecord::Base
     has_many :users, through: :favorites
 
     def puppy_choices
-        puts "You get all the dogs! (Booted into Recommendation method)"
         choices = Breed.where(activity_level: User.current_user.activity_level, 
                 kid_friendly: User.current_user.kid_friendly,
                 dog_size: User.current_user.dog_size, 
@@ -14,6 +13,17 @@ class Breed < ActiveRecord::Base
             end
 
         system "clear"
+
+            if perfect_dogs.length == 0
+                prompt = TTY::Prompt.new
+                puppy_choices_selection = prompt.select("Looks like there is no dog out there for you. Are you maybe a cat person?", %w(Try_Again Exit))
+                    if puppy_choices_selection == "Try_Again"
+                        App.new.user_questions
+                    else puppy_choices_selection == "Exit"
+                        App.exit
+                    end
+            end
+
         puts perfect_dogs 
         sleep(3,)
         self.choose_a_dog
@@ -35,11 +45,16 @@ class Breed < ActiveRecord::Base
 
             Favorite.create(user_id: User.current_user.id, breed_id: my_dogs.id)
             system "clear"
+            puts "You have added a #{dog_choice} to your favorites!"
+            sleep(4,)
+            system "clear"
             App.next_move
-        elsif input == "Try_Again"
-            App.user_questions
-        else input == "Exit"
-            App.exit
+
+        elsif selection == "Try_Again"
+            App.new.user_questions
+            
+        else selection == "Exit"
+           App.exit
         end
     end
 

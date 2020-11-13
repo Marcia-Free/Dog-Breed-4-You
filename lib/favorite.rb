@@ -4,31 +4,32 @@ class Favorite < ActiveRecord::Base
 
     def favorite_puppies
         system "clear"
-        puts "These are your favorites!"
+        puts "Favorite Puppies:"
         puts ""
-            Breed.new.user_breeds.find_all do |dog|
+            Breed.new.user_breeds.each do |dog|
                 puts dog.breed
             end
+        puts ""
 
         prompt = TTY::Prompt.new
-        input = prompt.select("What would you like to do?", %w(Puppy_Details Delete_Puppy Go_Back Exit))
-        if input == "Puppy_Details"
+        selection = prompt.select("What would you like to do?", %w(Puppy_Details Delete_Puppy Go_Back Exit))
+        if selection == "Puppy_Details"
             puppy_details
 
             prompt = TTY::Prompt.new
-            selection = prompt.select("What would you like to do?", %w(Go_Back Exit))
-                if selection == "Go_Back"
+            input = prompt.select("What would you like to do?", %w(Go_Back Exit))
+                if input == "Go_Back"
                     favorite_puppies
-                else selection == "Exit"
-                    exit
+                else input == "Exit"
+                    App.exit
                 end
 
-        elsif input == "Delete_Puppy"
+        elsif selection == "Delete_Puppy"
             delete
-        elsif input == "Go_Back"
+        elsif selection == "Go_Back"
             system "clear"
             App.next_move
-        else input == "Exit"
+        else selection == "Exit"
             system "clear"
             App.exit
         end
