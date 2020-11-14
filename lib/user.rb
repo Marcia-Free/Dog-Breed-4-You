@@ -54,6 +54,7 @@ class User < ActiveRecord::Base
         @@current_user
     end
 
+    
     def self.current_user
         @@current_user
     end
