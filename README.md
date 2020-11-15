@@ -14,7 +14,7 @@ video link
 * Users can see dog details of their dogs in their favorite.
 * Users can delete dogs they no longer want to see in their favorites
 
-### Built With
+## Built With
 * Ruby
 * SQLite3 as the database for Active Record
 * TTY (font, prompt and cursor) for styling
@@ -25,15 +25,18 @@ video link
 1. Run ```bundle install```
 2. Enjoy!
 
-### Contributing
+
+## Contributing
 [CONTRIBUTING.md](https://github.com/Marcia-Free/ruby-project-guidelines/blob/master/CONTRIBUTING.md)
 
-### Authors
+## License
+[LICENSE.md](https://github.com/Marcia-Free/ruby-project-guidelines/blob/master/LICENSE.md)
+
+
+## Authors
 * **Marcia Freeman**
 * **Dena Weiss Neuman**
 
-### License
-[LICENSE.md](https://github.com/Marcia-Free/ruby-project-guidelines/blob/master/LICENSE.md)
 
 ### Acknowledgments
 Special thanks to Derick Castillo and Max Oppenheimer for pointing us in the right direction when we were completely stuck!
