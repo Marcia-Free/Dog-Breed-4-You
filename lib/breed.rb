@@ -3,24 +3,7 @@ class Breed < ActiveRecord::Base
     has_many :favorites
     has_many :users, through: :favorites
 
-
-    def puppy_choices
-        choices = Breed.where(activity_level: User.current_user.activity_level, 
-                kid_friendly: User.current_user.kid_friendly,
-                dog_size: User.current_user.dog_size, 
-                hypoallergenic: User.current_user.hypoallergenic)
-
-            perfect_dogs = choices.all.map do |dog|
-                dog.breed 
-            end
-
-        system "clear"
-        puts perfect_dogs 
-        sleep(3,)
-        self.choose_a_dog
-    end 
-
-
+    
     def puppy_choices
         choices = Breed.where(activity_level: User.current_user.activity_level, 
                 kid_friendly: User.current_user.kid_friendly,

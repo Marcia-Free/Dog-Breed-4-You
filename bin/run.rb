@@ -18,7 +18,6 @@ def display_title
     system "clear"
     dog_pic
     fork{ exec "afplay", "music/dog_bark.mp3" }
-    #binding.pry
     sleep(4,)
 end
 
