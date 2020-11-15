@@ -26,17 +26,21 @@ video link
 2. Enjoy!
 
 ### Contributing
-[CONTRIBUTING.md](https://gist.github.com/dbcastillo/75308bee09c36e8e8aedd58a6de0e37f)
+[CONTRIBUTING.md](https://github.com/Marcia-Free/ruby-project-guidelines/blob/master/CONTRIBUTING.md)
 
 ### Authors
 * **Marcia Freeman**
 * **Dena Weiss Neuman**
 
 ### License
-[LICENSE.md](https://mit-license.org/)
+[LICENSE.md](https://github.com/Marcia-Free/ruby-project-guidelines/blob/master/LICENSE.md)
 
+### Acknowledgments
+Special thanks to Derick Castillo and Max Oppenheimer for pointing us in the right direction when we were completely stuck!
+
+
+----Delete when done---
 ## Instructions
-
 1. Fork and clone this repository.
 2. Build your application. Make sure to commit early and commit often. Commit messages should be meaningful (clearly describe what you're doing in the commit) and accurate (there should be nothing in the commit that doesn't match the description in the commit message). Good rule of thumb is to commit every 3-7 mins of actual coding time. Most of your commits should have under 15 lines of code and a 2 line commit is perfectly acceptable.
 3. Make sure to create a good README.md with a short description, install instructions, a contributor's guide and a link to the license for your code.
@@ -51,15 +55,3 @@ video link
       - Address what, if anything, you would change or add to what you have today.
       - Present any code you would like to highlight.   
 7. *OPTIONAL, BUT RECOMMENDED*: Write a blog post about the project and process.
-
-
-
-Projects need to be approved prior to launching into them, so take some time to brainstorm project options that will fulfill the requirements above.  You must have a minimum of four [user stories](https://en.wikipedia.org/wiki/User_story) to help explain how a user will interact with your app.  A user story should follow the general structure of `"As a <role>, I want <goal/desire> so that <benefit>"`. For example, if we were creating an app to randomly choose nearby restaurants on Yelp, we might write:
-
-* As a user, I want to be able to enter my name to retrieve my records
-* As a user, I want to enter a location and be given a random nearby restaurant suggestion
-* As a user, I should be able to reject a suggestion and not see that restaurant suggestion again
-* As a user, I want to be able to save to and retrieve a list of favorite restaurant suggestions
-
-
-
