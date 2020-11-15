@@ -5,7 +5,9 @@ This is a Ruby CLI application that provides dog recommendations based off of yo
 
 ## Link to Demo Video
 
-video link
+video link below
+
+https://youtu.be/7pVJ-cFKQ9s
 
 ## Application Features
 * A user can create a new account or log into their existing account
