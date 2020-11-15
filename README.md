@@ -1,40 +1,49 @@
-# Module One Final Project Guidelines
+# Dog Breed 4 You
 
-Congratulations, you're at the end of module one! You've worked crazy hard to get here and have learned a ton.
+This is a Ruby CLI application that provides dog recommendations based off of your lifestyle.
 
-For your final project, we'll be building a Command Line database application.
 
-## Project Requirements
+## Link to Demo Video
 
-### Option One - Data Analytics Project
+video link
 
-1. Access a Sqlite3 Database using ActiveRecord.
-2. You should have at minimum three models including one join model. This means you must have a many-to-many relationship.
-3. You should seed your database using data that you collect either from a CSV, a website by scraping, or an API.
-4. Your models should have methods that answer interesting questions about the data. For example, if you've collected info about movie reviews, what is the most popular movie? What movie has the most reviews?
-5. You should provide a CLI to display the return values of your interesting methods.  
-6. Use good OO design patterns. You should have separate classes for your models and CLI interface.
+## Application Features
+* A user can create a new account or log into their existing account
+* All users can update their recommendations by going through the survey
+* A user can save dogs to their favorites.
+* Users can see dog details of their dogs in their favorite.
+* Users can delete dogs they no longer want to see in their favorites
 
-  **Resource:** [Easy Access APIs](https://github.com/learn-co-curriculum/easy-access-apis)
+## Built With
+* Ruby
+* SQLite3 as the database for Active Record
+* TTY (font, prompt and cursor) for styling
+* Colorize for styling
+* Pastel for styling
 
-### Option Two - Command Line CRUD App
+### Install Instructions
+1. Run ```bundle install```
+2. Enjoy!
 
-1. Access a Sqlite3 Database using ActiveRecord.
-2. You should have a minimum of three models.
-3. You should build out a CLI to give your user full CRUD ability for at least one of your resources. For example, build out a command line To-Do list. A user should be able to create a new to-do, see all todos, update a todo item, and delete a todo. Todos can be grouped into categories, so that a to-do has many categories and categories have many to-dos.
-4. Use good OO design patterns. You should have separate classes for your models and CLI interface.
 
-### Brainstorming and Proposing a Project Idea
+## Contributing
+[CONTRIBUTING.md](https://github.com/Marcia-Free/ruby-project-guidelines/blob/master/CONTRIBUTING.md)
 
-Projects need to be approved prior to launching into them, so take some time to brainstorm project options that will fulfill the requirements above.  You must have a minimum of four [user stories](https://en.wikipedia.org/wiki/User_story) to help explain how a user will interact with your app.  A user story should follow the general structure of `"As a <role>, I want <goal/desire> so that <benefit>"`. For example, if we were creating an app to randomly choose nearby restaurants on Yelp, we might write:
+## License
+[LICENSE.md](https://github.com/Marcia-Free/ruby-project-guidelines/blob/master/LICENSE.md)
 
-* As a user, I want to be able to enter my name to retrieve my records
-* As a user, I want to enter a location and be given a random nearby restaurant suggestion
-* As a user, I should be able to reject a suggestion and not see that restaurant suggestion again
-* As a user, I want to be able to save to and retrieve a list of favorite restaurant suggestions
 
+## Authors
+* **Marcia Freeman**
+* **Dena Weiss Neuman**
+
+
+### Acknowledgments
+Special thanks to Derick Castillo and Max Oppenheimer for pointing us in the right direction when we were completely stuck!
+
+
+----Delete when done---
 ## Instructions
-
 1. Fork and clone this repository.
 2. Build your application. Make sure to commit early and commit often. Commit messages should be meaningful (clearly describe what you're doing in the commit) and accurate (there should be nothing in the commit that doesn't match the description in the commit message). Good rule of thumb is to commit every 3-7 mins of actual coding time. Most of your commits should have under 15 lines of code and a 2 line commit is perfectly acceptable.
 3. Make sure to create a good README.md with a short description, install instructions, a contributor's guide and a link to the license for your code.
@@ -49,11 +58,3 @@ Projects need to be approved prior to launching into them, so take some time to 
       - Address what, if anything, you would change or add to what you have today.
       - Present any code you would like to highlight.   
 7. *OPTIONAL, BUT RECOMMENDED*: Write a blog post about the project and process.
-
----
-### Common Questions:
-- How do I turn off my SQL logger?
-```ruby
-# in config/environment.rb add this line:
-ActiveRecord::Base.logger = nil
-```
